@@ -9,7 +9,7 @@ br.open("https://newyork.ucbtrainingcenter.com/login")
 form = br.get_form()
 #These are the fields of the form. The personal details can be stored in a .config file imported above.
 form['email'] = 'ron.y.kagan@gmail.com'
-form['password'] = 'r12585'
+form['password'] = 'nope'
 #Submit the form
 br.submit_form(form)
 
