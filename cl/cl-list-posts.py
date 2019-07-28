@@ -5,7 +5,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from bs4 import BeautifulSoup
 import urllib.request
-from elementium.drivers.se import SeElements
 
 chrome_path = r"/Users/ron/web-scraping-and-automation/chromedriver"
 driver = webdriver.Chrome(chrome_path)
