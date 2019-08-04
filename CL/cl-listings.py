@@ -7,14 +7,14 @@ from selenium.common.exceptions import TimeoutException
 from bs4 import BeautifulSoup
 import urllib.request
 
-class CraiglistScraper(object):
+class CraigslistScraper(object):
 	def __init__(self, location, postal, max_price, radius):
-		self.location = location
-		self.postal = postal
-		self.max_price = max_price
-		self.radius = radius
+		self.location = 'newyork'
+		self.postal = '10030'
+		self.max_price = '100'
+		self.radius = '1'
 
-		self.url = f"https://{location}.craigslist.org/search/sss?search_distance={radius}&postal={postal}&max_price={max_price}"
+		self.url = "https://newyork.craigslist.org/search/sss?search_distance=1&postal=10030&max_price=100"
 
 		self.driver = webdriver.Chrome()
 		self.delay = 5
@@ -75,10 +75,10 @@ class CraiglistScraper(object):
 	def quit(self):
 		self.driver.close()
 
-location = "sfbay"
-postal = "94201"
-max_price = "500"
-radius = "5"
+location = "newyork"
+postal = "10030"
+max_price = "100"
+radius = "1"
 
 scraper = CraiglistScraper(location, postal, max_price, radius)
 scraper.load_craigslist_url()
