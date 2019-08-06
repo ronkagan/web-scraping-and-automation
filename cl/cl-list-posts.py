@@ -35,21 +35,19 @@ class CraiglistScraper(object):
         for link in soup.findAll("a", {"class": "result-title hdrlnk"}):
                 print(link["href"])
                 url_list.append(link["href"])
-        with open('url_list_file.txt', 'w') as filehandle:
-            for listitem in url_list:
-                filehandle.write('%s\n' % listitem)
-                try:
-                    self.driver.get(listitem)
-                    self.driver.find_element_by_xpath("//button[@class=\"reply-button js-only\"]").click()
-                    time.sleep(1)
-                    email = self.driver.find_element_by_class_name("reply-email-address")
-                    hiddenemail = email.find_element_by_xpath("//a[@class=\"mailapp\"]").text
-                    with open('email_list_file.txt', 'w') as filehandle:
-                        for listitem in email_list:
-                            filehandle.write('%s\n' % listitem)
-                    print(hiddenemail)
-                except NoSuchElementException:
-                    pass
+                for listitem in url_list:
+                        try:
+                            self.driver.get(listitem)
+                            print(listitem)
+                            time.sleep(1)
+                            self.driver.find_element_by_xpath("//button[@class=\"reply-button js-only\"]").click()
+                            time.sleep(1)
+                            email = self.driver.find_element_by_class_name("reply-email-address")
+                            hiddenemail = email.find_element_by_xpath("//a[@class=\"mailapp\"]").text
+                            print(hiddenemail)
+                            email_list.append(hiddenemail)
+                        except NoSuchElementException:
+                            pass
 
     def quit(self):
         self.driver.close()
